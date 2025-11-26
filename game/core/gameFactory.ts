@@ -6,7 +6,6 @@ import {
   FROG_START_POSITION_X,
   FROG_START_POSITION_Y,
   FROG_WIDTH_IN_PIXELS,
-  GAME_CANVAS_HEIGHT_IN_PIXELS,
   GAME_CANVAS_WIDTH_IN_PIXELS,
 } from "./gameConstants";
 
@@ -47,7 +46,8 @@ export function createInitialCars(): Car[] {
         },
         width: CAR_WIDTH_IN_PIXELS,
         height: CAR_HEIGHT_IN_PIXELS,
-        speedInPixelsPerSecond: CAR_BASE_SPEED_IN_PIXELS_PER_SECOND + laneIndex * 20,
+        speedInPixelsPerSecond:
+          CAR_BASE_SPEED_IN_PIXELS_PER_SECOND + laneIndex * 20,
         direction,
       });
     }
@@ -55,4 +55,14 @@ export function createInitialCars(): Car[] {
 
   return cars;
 }
+
+//Setzt kompletten GameState zusammen
+export function createInitialGameState(): GameState {
+  return {
+    frog: createInitialFrog(),
+    cars: createInitialCars(),
+    isGameOver: false,
+    score: 0,
+    livesRemaining: 3,
+  };
 }
